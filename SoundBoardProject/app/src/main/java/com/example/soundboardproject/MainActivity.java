@@ -47,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         mButtonSpeak.setEnabled(true);
 
-                        //Log.d("Current voice", mTTS.getVoice().toString());
+                        Log.d("Voice", mTTS.getVoice().toString());
+
                         int i = 0;
                         for(Voice v: mTTS.getVoices()) {
                             if (v.getName().startsWith("ru")) {
@@ -55,8 +56,9 @@ public class MainActivity extends AppCompatActivity {
                                 rb.setId(i);
                                 rb.setText(v.getName());
                                 mRadioGroup.addView(rb);
+                                if (v.getName().equals(mTTS.getVoice().getName()))
+                                    mRadioGroup.check(i);
                                 i++;
-                                //Log.d("Voice", v.toString());
                             }
                         }
                     }
